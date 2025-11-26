@@ -152,6 +152,15 @@ module noise_shaper_tb;
             @(posedge clk);
             $display("  %5t   %0b  %0b  %0b      %2d", $time, c1, c2, c3, out_f);
         end
+        
+        // After the transient, output should settle back to zero
+        if (out_f == 4'sd0) begin
+            $display("  PASS: Output settled back to zero after transient");
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: Output did not settle to zero (got %0d)", out_f);
+            fail_count = fail_count + 1;
+        end
         $display("");
 
         // ---------------------------------------------------------------------
@@ -178,6 +187,15 @@ module noise_shaper_tb;
             @(posedge clk);
             $display("  %5t   %0b  %0b  %0b      %2d", $time, c1, c2, c3, out_f);
         end
+        
+        // After the transient, output should settle back to zero
+        if (out_f == 4'sd0) begin
+            $display("  PASS: Output settled back to zero after transient");
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: Output did not settle to zero (got %0d)", out_f);
+            fail_count = fail_count + 1;
+        end
         $display("");
 
         // ---------------------------------------------------------------------
@@ -193,6 +211,15 @@ module noise_shaper_tb;
         repeat (10) begin
             @(posedge clk);
             $display("  %5t   %0b  %0b  %0b      %2d", $time, c1, c2, c3, out_f);
+        end
+        
+        // Differentiator terms should cancel, leaving only c1
+        if (out_f == 4'sd1) begin
+            $display("  PASS: Output settled to c1 value (+1)");
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: Output should be +1 (got %0d)", out_f);
+            fail_count = fail_count + 1;
         end
         $display("");
 
@@ -243,11 +270,35 @@ module noise_shaper_tb;
         $display("  Alternating c1 between 0 and 1");
         $display("  Time    c1 c2 c3   out_f");
         
-        c2 = 0; c3 = 0;
+        // Reset to clear any state from previous tests
+        rst_n = 0; c1 = 0; c2 = 0; c3 = 0;
+        @(posedge clk);
+        rst_n = 1;
+        @(posedge clk);
+        
+        violations = 0;
+        
         for (i = 0; i < 10; i = i + 1) begin
             c1 = i % 2;
             @(posedge clk);
             $display("  %5t   %0b  %0b  %0b      %2d", $time, c1, c2, c3, out_f);
+            
+            // After the first few cycles (to allow settling), check the pattern
+            if (i >= 2) begin
+                // out_f should match the previous c1 value (1-cycle delay)
+                if (out_f != ((i-1) % 2)) begin
+                    violations = violations + 1;
+                end
+            end
+        end
+        
+        // Output should alternate between 0 and 1 (with 1-cycle delay)
+        if (violations == 0) begin
+            $display("  PASS: Output follows c1 input (with proper delay)");
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: Output pattern incorrect (%0d violations)", violations);
+            fail_count = fail_count + 1;
         end
         $display("");
 

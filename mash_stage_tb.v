@@ -105,10 +105,20 @@ module mash_stage_tb;
         
         rst_n = 0; @(posedge clk); rst_n = 1;  // Reset accumulator
         in_val = 16'd5;
+        carry_count = 0;
         
         repeat (10) begin
             @(posedge clk);
             $display("  %0t    %5d     %5d     %0b", $time, in_val, e_out, c_out);
+            if (c_out) carry_count = carry_count + 1;
+        end
+        
+        if (carry_count == 0) begin
+            $display("  PASS: No carries generated as expected");
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: Unexpected carries detected (%0d)", carry_count);
+            fail_count = fail_count + 1;
         end
         $display("");
 
@@ -123,10 +133,20 @@ module mash_stage_tb;
         
         rst_n = 0; @(posedge clk); rst_n = 1;  // Reset accumulator
         in_val = 16'hF000;
+        carry_count = 0;
         
         repeat (5) begin
             @(posedge clk);
             $display("  %0t    %5h     %5h     %0b", $time, in_val, e_out, c_out);
+            if (c_out) carry_count = carry_count + 1;
+        end
+        
+        if (carry_count > 0) begin
+            $display("  PASS: Carries generated as expected (%0d/5)", carry_count);
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: No carries detected when expected");
+            fail_count = fail_count + 1;
         end
         $display("");
 
@@ -143,6 +163,7 @@ module mash_stage_tb;
         // Add 0x8000 twice - should overflow exactly
         in_val = 16'h8000;
         @(posedge clk);
+        @(posedge clk);  // Wait one more cycle to see the updated value
         $display("  After 1st 0x8000: e_out=%h, c_out=%b (expect: 8000, 0)", e_out, c_out);
         
         @(posedge clk);
@@ -152,7 +173,7 @@ module mash_stage_tb;
             $display("  PASS: Exact overflow detected correctly");
             pass_count = pass_count + 1;
         end else begin
-            $display("  FAIL: Overflow not detected correctly");
+            $display("  FAIL: Overflow not detected correctly (got e_out=%h, c_out=%b)", e_out, c_out);
             fail_count = fail_count + 1;
         end
         $display("");
@@ -167,11 +188,21 @@ module mash_stage_tb;
         $display("  Time    in_val    e_out    c_out");
         
         rst_n = 0; @(posedge clk); rst_n = 1;  // Reset accumulator
+        carry_count = 0;
         
         for (cycle_count = 0; cycle_count < 8; cycle_count = cycle_count + 1) begin
             in_val = (cycle_count % 2 == 0) ? 16'h0001 : 16'hFFFF;
             @(posedge clk);
             $display("  %0t    %5h     %5h     %0b", $time, in_val, e_out, c_out);
+            if (c_out) carry_count = carry_count + 1;
+        end
+        
+        if (carry_count > 0) begin
+            $display("  PASS: Alternating pattern produced carries (%0d/8)", carry_count);
+            pass_count = pass_count + 1;
+        end else begin
+            $display("  FAIL: Alternating pattern should produce carries");
+            fail_count = fail_count + 1;
         end
         $display("");
 

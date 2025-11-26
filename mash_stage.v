@@ -34,16 +34,35 @@ module mash_stage #(
     output reg                c_out
 );
 
-    // DUMMY IMPLEMENTATION - TO BE REPLACED WITH ACTUAL LOGIC
-    // For now, just pass through zeros to allow compilation
+    // -------------------------------------------------------------------------
+    // Accumulator register
+    // -------------------------------------------------------------------------
+    reg [WIDTH-1:0] accumulator;
+
+    // -------------------------------------------------------------------------
+    // Sum calculation (WIDTH+1 bits to capture carry)
+    // -------------------------------------------------------------------------
+    wire [WIDTH:0] sum;
+    assign sum = {1'b0, accumulator} + {1'b0, in_val};
+
+    // -------------------------------------------------------------------------
+    // Sequential logic
+    // -------------------------------------------------------------------------
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
+            // Reset accumulator and outputs
+            accumulator <= {WIDTH{1'b0}};
             e_out <= {WIDTH{1'b0}};
             c_out <= 1'b0;
         end else begin
-            // Dummy: just output zeros
-            e_out <= {WIDTH{1'b0}};
-            c_out <= 1'b0;
+            // Update accumulator with the lower WIDTH bits
+            accumulator <= sum[WIDTH-1:0];
+            
+            // Output the error (lower WIDTH bits of sum)
+            e_out <= sum[WIDTH-1:0];
+            
+            // Output the carry (MSB of sum)
+            c_out <= sum[WIDTH];
         end
     end
 
