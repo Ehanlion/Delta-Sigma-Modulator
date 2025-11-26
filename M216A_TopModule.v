@@ -29,73 +29,98 @@
 // ============================================================================
 
 module M216A_TopModule (
-    input wire        clk,       // 500 MHz clock
-    input wire        rst_n,     // active-low reset
-    input wire [3:0]  in_i,      // integer part (3..11)
-    input wire [15:0] in_f,      // fractional part (0..65535)
-    output wire [3:0] out        // instantaneous divide value
+    input wire clk,                 // 500 MHz clock
+    input wire rst_n,               // active-low reset
+    input wire [3:0] in_i,          // integer part, restricted to range of 3..11
+    input wire [15:0] in_f,         // fractional part (0..65535)
+    output wire [3:0] out           // instantaneous divide value
 );
 
-    // -------------------------------------------------------------------------
-    // Wires between the three MASH stages
-    // -------------------------------------------------------------------------
-    wire [15:0] e1, e2, e3;  // error outputs
-    wire        c1, c2, c3;  // carry outputs
+    // Connect Mash stages here...
+    // Remember from the project diagram...
+    // 3 Integrator stages, each produce a 16b error signal, e1, e2, e3 (tossed)
+    // 3 Integrators, each produce a 1b carry signals, c1, c2, c3
+    wire [15:0] e1, e2, e3;         // error outputs
+    wire        c1, c2, c3;         // carry outputs (1b Quantizer)
 
-    // -------------------------------------------------------------------------
-    // Instantiate the three first-order delta-sigma stages
-    // -------------------------------------------------------------------------
+    // ========================================================
+    // INTEGRATOR STAGES
+    // --------------------------------------------------------
+    // Build the Integrators together...
+    // Input on one end is in_
+    // in_f -> stage 1
+    // e1 -> stage 2
+    // e2 -> stage 3
+    // e3 -> discarded
+    // 3 Outputs c1, c2, c3 go to the noise shaping later
+    // ========================================================
 
     // Stage 1: integrates the fractional input in_f
     mash_stage #(
-        .WIDTH(16)
+        .WIDTH   (16)
     ) stage1 (
-        .clk   (clk),
-        .rst_n (rst_n),
-        .in_val(in_f),
-        .e_out (e1),
-        .c_out (c1)
+        .clk     (clk),
+        .rst_n   (rst_n),
+        .in_val  (in_f),
+        .e_out   (e1),
+        .c_out   (c1)
     );
 
     // Stage 2: integrates e1
     mash_stage #(
-        .WIDTH(16)
+        .WIDTH   (16)
     ) stage2 (
-        .clk   (clk),
-        .rst_n (rst_n),
-        .in_val(e1),
-        .e_out (e2),
-        .c_out (c2)
+        .clk     (clk),
+        .rst_n   (rst_n),
+        .in_val  (e1),
+        .e_out   (e2),
+        .c_out   (c2)
     );
 
     // Stage 3: integrates e2
     mash_stage #(
-        .WIDTH(16)
+        .WIDTH   (16)
     ) stage3 (
-        .clk   (clk),
-        .rst_n (rst_n),
-        .in_val(e2),
-        .e_out (e3),
-        .c_out (c3)
+        .clk     (clk),
+        .rst_n   (rst_n),
+        .in_val  (e2),
+        .e_out   (e3),
+        .c_out   (c3)
     );
 
-    // -------------------------------------------------------------------------
-    // Noise shaper: combines c1, c2, c3 into a small signed fractional output
-    // -------------------------------------------------------------------------
+    // ========================================================
+    // NOISE SHAPING
+    // --------------------------------------------------------
+    // Build the Noise Shaper...
+    // c1, c2, c3 -> into the noise shaper
+    // out_f -> mixed with in_N to get the OUT signal
+    // OUT generated from out_f and in_i
+    // ========================================================
+
     wire signed [3:0] out_f;
 
     noise_shaper ns (
-        .clk  (clk),
-        .rst_n(rst_n),
-        .c1   (c1),
-        .c2   (c2),
-        .c3   (c3),
-        .out_f(out_f)
+        .clk    (clk),
+        .rst_n  (rst_n),
+        .c1     (c1),
+        .c2     (c2),
+        .c3     (c3),
+        .out_f  (out_f)
     );
 
-    // -------------------------------------------------------------------------
-    // Final output combine: out = in_i + out_f
-    // -------------------------------------------------------------------------
+
+    // ========================================================
+    // FINAL OUTPUT COMBINATION
+    // --------------------------------------------------------
+    // Build the Final Output Combiner...
+    // in_i and out_f -> OUT signal
+    // OUT signal is the final output
+    // in_i is 4b unsigned
+    // out_f is 4b signed
+    // OUT is temporarily stored as 5b signed
+    // OUT is then truncated to 4b unsigned
+    // ========================================================
+
     reg [3:0] out_reg;
 
     // 5-bit signed intermediate to handle signed addition
