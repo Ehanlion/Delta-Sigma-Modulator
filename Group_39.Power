@@ -1,0 +1,55 @@
+Loading db file '/w/apps4/Synopsys/TSMC/CAD_TSMC-16-ADFP-FFC_Muse/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellss0p72v125c.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : M216A_TopModule
+Version: X-2025.06-SP3
+Date   : Tue Nov 25 23:16:56 2025
+****************************************
+
+
+Library(s) Used:
+
+    N16ADFP_StdCellss0p72v125c (File: /w/apps4/Synopsys/TSMC/CAD_TSMC-16-ADFP-FFC_Muse/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellss0p72v125c.db)
+
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+Design        Wire Load Model            Library
+------------------------------------------------
+M216A_TopModule        ZeroWireload      N16ADFP_StdCellss0p72v125c
+M216A_TopModule_DW01_add_0_DW01_add_1
+                       ZeroWireload      N16ADFP_StdCellss0p72v125c
+M216A_TopModule_DW01_add_1_DW01_add_2
+                       ZeroWireload      N16ADFP_StdCellss0p72v125c
+M216A_TopModule_DW01_add_2_DW01_add_3
+                       ZeroWireload      N16ADFP_StdCellss0p72v125c
+
+
+Global Operating Voltage = 0.72 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+M216A_TopModule                        1.43e-02    0.173 5.18e+04    0.239 100.0
+  stage1/add_46 (M216A_TopModule_DW01_add_2_DW01_add_3)
+                                       2.41e-03 6.07e-03 4.58e+03 1.31e-02   5.5
+  stage2/add_46 (M216A_TopModule_DW01_add_1_DW01_add_2)
+                                       2.11e-03 5.25e-03 4.26e+03 1.16e-02   4.9
+  stage3/add_46 (M216A_TopModule_DW01_add_0_DW01_add_1)
+                                       1.52e-03 4.84e-03 4.25e+03 1.06e-02   4.4
+1
