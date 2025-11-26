@@ -1,0 +1,35 @@
+ 
+****************************************
+check_design summary:
+Version:     X-2025.06-SP3
+Date:        Sun Nov 23 16:32:35 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     12
+    Unconnected ports (LINT-28)                                    12
+
+Cells                                                               3
+    Nets connected to multiple pins on same cell (LINT-33)          3
+--------------------------------------------------------------------------------
+
+Warning: In design 'M216A_TopModule_DW01_add_0_DW01_add_1', port 'A[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_0_DW01_add_1', port 'B[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_0_DW01_add_1', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_0_DW01_add_1', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_1_DW01_add_2', port 'A[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_1_DW01_add_2', port 'B[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_1_DW01_add_2', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_1_DW01_add_2', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_2_DW01_add_3', port 'A[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_2_DW01_add_3', port 'B[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_2_DW01_add_3', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule_DW01_add_2_DW01_add_3', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'M216A_TopModule', the same net is connected to more than one pin on submodule 'stage3/add_35'. (LINT-33)
+   Net 'n77' is connected to pins 'A[16]', 'B[16]'', 'CI'.
+Warning: In design 'M216A_TopModule', the same net is connected to more than one pin on submodule 'stage2/add_35'. (LINT-33)
+   Net 'n77' is connected to pins 'A[16]', 'B[16]'', 'CI'.
+Warning: In design 'M216A_TopModule', the same net is connected to more than one pin on submodule 'stage1/add_35'. (LINT-33)
+   Net 'n77' is connected to pins 'A[16]', 'B[16]'', 'CI'.
+1

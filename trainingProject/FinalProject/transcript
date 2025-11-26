@@ -1,0 +1,271 @@
+# Loading project FinalProject
+# Compile of mash_stage.v was successful.
+# Compile of mash_stage_tb.v was successful.
+# Compile of noise_shaper.v was successful.
+# Compile of noise_shaper_tb.v was successful.
+# 4 compiles, 0 failed with no errors.
+vsim work.noise_shaper_tb
+# vsim work.noise_shaper_tb 
+# Start time: 12:32:52 on Nov 23,2025
+# //  ModelSim DE 2024.2 May 20 2024 Linux 4.18.0-553.77.1.el8_10.x86_64
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.noise_shaper_tb
+# Loading work.noise_shaper
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+#  time   c1 c2 c3   out_f
+# 
+# TEST 1: c1=c2=c3=0
+#  5000   0  0  0    0
+#  7000   0  0  0    0
+#  9000   0  0  0    0
+# 11000   0  0  0    0
+# 13000   0  0  0    0
+# 15000   0  0  0    0
+# 17000   0  0  0    0
+# 19000   0  0  0    0
+# 
+# TEST 2: c1=1, c2=c3=0
+# 21000   1  0  0    0
+# 23000   1  0  0    1
+# 25000   1  0  0    1
+# 27000   1  0  0    1
+# 29000   1  0  0    1
+# 31000   1  0  0    1
+# 33000   1  0  0    1
+# 35000   1  0  0    1
+# 37000   1  0  0    1
+# 39000   1  0  0    1
+# 
+# TEST 3: pulsing c2
+# 41000   0  0  0    1
+# 43000   0  0  0    0
+# 45000   0  0  0    0
+# 47000   0  1  0    0
+# 49000   0  0  0    -1
+# 51000   0  0  0    1
+# 53000   0  0  0    0
+# 55000   0  0  0    0
+# 57000   0  0  0    0
+# 
+# TEST 4: pulsing c3
+# 59000   0  0  0    0
+# 61000   0  0  0    0
+# 63000   0  0  0    0
+# 65000   0  0  1    0
+# 67000   0  0  0    1
+# 69000   0  0  0    -2
+# 71000   0  0  0    1
+# 73000   0  0  0    0
+# 75000   0  0  0    0
+# 77000   0  0  0    0
+# 
+# Simulation complete.
+# ** Note: $stop    : /w/home.27/home/rsarmiento/ee216a/FinalProject/noise_shaper_tb.v(117)
+#    Time: 87 ns  Iteration: 0  Instance: /noise_shaper_tb
+# Break in Module noise_shaper_tb at /w/home.27/home/rsarmiento/ee216a/FinalProject/noise_shaper_tb.v line 117
+# Compile of mash_stage.v was successful.
+# Compile of mash_stage_tb.v was successful.
+# Compile of noise_shaper.v was successful.
+# Compile of noise_shaper_tb.v was successful.
+# Compile of M216A_Testbench.v was successful.
+# Compile of M216A_TopModule.v was successful.
+# 6 compiles, 0 failed with no errors.
+vsim work.M216A_Testbench
+# End time: 12:39:00 on Nov 23,2025, Elapsed time: 0:06:08
+# Errors: 0, Warnings: 3
+# vsim work.M216A_Testbench 
+# Start time: 12:39:00 on Nov 23,2025
+# Loading work.M216A_Testbench
+# Loading work.M216A_TopModule
+# Loading work.mash_stage
+# Loading work.noise_shaper
+restart
+run -all
+# 
+# Starting averaging over 5000 cycles...
+# 
+# -----------------------------------------------------
+# Input: in_i = 8, in_f = 32000
+# Total cycles averaged: 5000
+# Sum of out: 42440
+# Average out (divide ratio) ≈ 8.488000
+# -----------------------------------------------------
+# 
+# ** Note: $stop    : /w/home.27/home/rsarmiento/ee216a/FinalProject/M216A_Testbench.v(93)
+#    Time: 10023 ns  Iteration: 1  Instance: /M216A_Testbench
+# Break in Module M216A_Testbench at /w/home.27/home/rsarmiento/ee216a/FinalProject/M216A_Testbench.v line 93
+# Compile of mash_stage.v was successful.
+# Compile of mash_stage_tb.v was successful.
+# Compile of noise_shaper.v was successful.
+# Compile of noise_shaper_tb.v was successful.
+# Compile of M216A_Testbench.v was successful.
+# Compile of M216A_TopModule.v was successful.
+# 6 compiles, 0 failed with no errors.
+restart
+# Closing VCD file "M216A_TopModule.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.M216A_Testbench
+# Loading work.M216A_TopModule
+# Loading work.mash_stage
+# Loading work.noise_shaper
+run -all
+# 
+# === MULTI-INPUT AVERAGE TESTS ===
+# 
+# -----------------------------------------------------
+# Test: in_i = 8, in_f = 32000
+# Cycles averaged   : 5000
+# Sum of out        : 42440
+# Expected average  : 8.488281
+# Measured average  : 8.488000
+# Error (meas-exp)  : -0.000281
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 4, in_f = 32768
+# Cycles averaged   : 5000
+# Sum of out        : 22501
+# Expected average  : 4.500000
+# Measured average  : 4.500200
+# Error (meas-exp)  : 0.000200
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 7, in_f = 1000
+# Cycles averaged   : 5000
+# Sum of out        : 35074
+# Expected average  : 7.015259
+# Measured average  : 7.014800
+# Error (meas-exp)  : -0.000459
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 5, in_f = 100
+# Cycles averaged   : 5000
+# Sum of out        : 25008
+# Expected average  : 5.001526
+# Measured average  : 5.001600
+# Error (meas-exp)  : 0.000074
+# -----------------------------------------------------
+# 
+# 
+# === EXTREME EDGE TESTS ===
+# 
+# -----------------------------------------------------
+# Test: in_i = 3, in_f = 0
+# Cycles averaged   : 5000
+# Sum of out        : 15002
+# Expected average  : 3.000000
+# Measured average  : 3.000400
+# Error (meas-exp)  : 0.000400
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 11, in_f = 65535
+# Cycles averaged   : 5000
+# Sum of out        : 59999
+# Expected average  : 11.999985
+# Measured average  : 11.999800
+# Error (meas-exp)  : -0.000185
+# -----------------------------------------------------
+# 
+# 
+# === RANDOMIZED CARRY INJECTION TEST (noise_shaper) ===
+# 
+# Random carry test: N_RAND = 10000, violations = 0
+# Result: All random outputs stayed within [-3..+4].
+# 
+# All tests completed.
+# 
+# ** Note: $stop    : /w/home.27/home/rsarmiento/ee216a/FinalProject/M216A_Testbench.v(219)
+#    Time: 80135 ns  Iteration: 0  Instance: /M216A_Testbench
+# Break in Module M216A_Testbench at /w/home.27/home/rsarmiento/ee216a/FinalProject/M216A_Testbench.v line 219
+restart
+# Closing VCD file "M216A_TopModule.vcd"
+run -all
+# 
+# === MULTI-INPUT AVERAGE TESTS ===
+# 
+# -----------------------------------------------------
+# Test: in_i = 8, in_f = 32000
+# Cycles averaged   : 5000
+# Sum of out        : 42440
+# Expected average  : 8.488281
+# Measured average  : 8.488000
+# Error (meas-exp)  : -0.000281
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 4, in_f = 32768
+# Cycles averaged   : 5000
+# Sum of out        : 22501
+# Expected average  : 4.500000
+# Measured average  : 4.500200
+# Error (meas-exp)  : 0.000200
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 7, in_f = 1000
+# Cycles averaged   : 5000
+# Sum of out        : 35074
+# Expected average  : 7.015259
+# Measured average  : 7.014800
+# Error (meas-exp)  : -0.000459
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 5, in_f = 100
+# Cycles averaged   : 5000
+# Sum of out        : 25008
+# Expected average  : 5.001526
+# Measured average  : 5.001600
+# Error (meas-exp)  : 0.000074
+# -----------------------------------------------------
+# 
+# 
+# === EXTREME EDGE TESTS ===
+# 
+# -----------------------------------------------------
+# Test: in_i = 3, in_f = 0
+# Cycles averaged   : 5000
+# Sum of out        : 15002
+# Expected average  : 3.000000
+# Measured average  : 3.000400
+# Error (meas-exp)  : 0.000400
+# -----------------------------------------------------
+# 
+# -----------------------------------------------------
+# Test: in_i = 11, in_f = 65535
+# Cycles averaged   : 5000
+# Sum of out        : 59999
+# Expected average  : 11.999985
+# Measured average  : 11.999800
+# Error (meas-exp)  : -0.000185
+# -----------------------------------------------------
+# 
+# 
+# === RANDOMIZED CARRY INJECTION TEST (noise_shaper) ===
+# 
+# Random carry test: N_RAND = 10000, violations = 0
+# Result: All random outputs stayed within [-3..+4].
+# 
+# All tests completed.
+# 
+# ** Note: $stop    : /w/home.27/home/rsarmiento/ee216a/FinalProject/M216A_Testbench.v(219)
+#    Time: 80135 ns  Iteration: 0  Instance: /M216A_Testbench
+# Break in Module M216A_Testbench at /w/home.27/home/rsarmiento/ee216a/FinalProject/M216A_Testbench.v line 219
+# End time: 12:55:35 on Nov 23,2025, Elapsed time: 0:16:35
+# Errors: 0, Warnings: 1

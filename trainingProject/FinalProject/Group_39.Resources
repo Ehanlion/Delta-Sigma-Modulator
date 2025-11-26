@@ -1,0 +1,36 @@
+ 
+****************************************
+Report : resources
+Design : M216A_TopModule
+Version: X-2025.06-SP3
+Date   : Sun Nov 23 16:32:35 2025
+****************************************
+
+Resource Sharing Report for design M216A_TopModule in file ./M216A_TopModule.v
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r398     | DW01_add     | width=4    |               | add_123              |
+| r400     | DW01_add     | width=17   |               | stage1/add_35        |
+| r402     | DW01_add     | width=17   |               | stage2/add_35        |
+| r404     | DW01_add     | width=17   |               | stage3/add_35        |
+| r1144    | DW01_add     | width=4    |               | add_2_root_sub_1_root_ns/add_85_2 |
+| r1146    | DW01_sub     | width=4    |               | sub_3_root_sub_1_root_ns/add_85_2 |
+| r1148    | DW01_sub     | width=4    |               | sub_1_root_sub_1_root_ns/add_85_2 |
+| r1150    | DW01_add     | width=4    |               | add_0_root_sub_1_root_ns/add_85_2 |
+===============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| stage1/add_35      | DW01_add         | rpl                |                |
+| stage2/add_35      | DW01_add         | rpl                |                |
+| stage3/add_35      | DW01_add         | rpl                |                |
+===============================================================================
+
+1
