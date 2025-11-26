@@ -1,0 +1,159 @@
+# vsim -c -do "run -all; quit" work.EE216A_Testbench 
+# Start time: 21:00:08 on Nov 25,2025
+# //  ModelSim DE 2024.2 May 20 2024 Linux 4.18.0-553.75.1.el8_10.x86_64
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.EE216A_Testbench
+# Loading work.M216A_TopModule
+# Loading work.mash_stage
+# Loading work.noise_shaper
+# run -all
+# 
+# 
+# ========================================================
+#   M216A DELTA-SIGMA MODULATOR TESTBENCH
+# ========================================================
+#   Clock: 500 MHz (2ns period)
+#   Averaging window: 5000 cycles
+# ========================================================
+# 
+# 
+# >>> EDGE CASE TESTS <<<
+# 
+# =====================================================
+# TEST 1: Edge: Min in_i=3, Min in_f=0
+# -----------------------------------------------------
+#   Input:  in_i = 3, in_f = 0 (0x0000)
+#   Cycles averaged: 5000
+#   Sum of outputs:  15000
+#   Expected avg:    3.000000
+#   Measured avg:    3.000000
+#   Error:           0.000000
+#   Result: PASS
+# =====================================================
+# 
+# =====================================================
+# TEST 2: Edge: Min in_i=3, Max in_f=65535
+# -----------------------------------------------------
+#   Input:  in_i = 3, in_f = 65535 (0xffff)
+#   Cycles averaged: 5000
+#   Sum of outputs:  15000
+#   Expected avg:    3.999985
+#   Measured avg:    3.000000
+#   Error:           -0.999985
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# =====================================================
+# TEST 3: Edge: Max in_i=11, Min in_f=0
+# -----------------------------------------------------
+#   Input:  in_i = 11, in_f = 0 (0x0000)
+#   Cycles averaged: 5000
+#   Sum of outputs:  55000
+#   Expected avg:    11.000000
+#   Measured avg:    11.000000
+#   Error:           0.000000
+#   Result: PASS
+# =====================================================
+# 
+# =====================================================
+# TEST 4: Edge: Max in_i=11, Max in_f=65535
+# -----------------------------------------------------
+#   Input:  in_i = 11, in_f = 65535 (0xffff)
+#   Cycles averaged: 5000
+#   Sum of outputs:  55000
+#   Expected avg:    11.999985
+#   Measured avg:    11.000000
+#   Error:           -0.999985
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# 
+# >>> RANDOM CASE TESTS <<<
+# 
+# =====================================================
+# TEST 5: Random: in_i=5, in_f=12345
+# -----------------------------------------------------
+#   Input:  in_i = 5, in_f = 12345 (0x3039)
+#   Cycles averaged: 5000
+#   Sum of outputs:  25000
+#   Expected avg:    5.188370
+#   Measured avg:    5.000000
+#   Error:           -0.188370
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# =====================================================
+# TEST 6: Random: in_i=7, in_f=32768 (0.5)
+# -----------------------------------------------------
+#   Input:  in_i = 7, in_f = 32768 (0x8000)
+#   Cycles averaged: 5000
+#   Sum of outputs:  35000
+#   Expected avg:    7.500000
+#   Measured avg:    7.000000
+#   Error:           -0.500000
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# =====================================================
+# TEST 7: Random: in_i=8, in_f=32000
+# -----------------------------------------------------
+#   Input:  in_i = 8, in_f = 32000 (0x7d00)
+#   Cycles averaged: 5000
+#   Sum of outputs:  40000
+#   Expected avg:    8.488281
+#   Measured avg:    8.000000
+#   Error:           -0.488281
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# =====================================================
+# TEST 8: Random: in_i=4, in_f=1000
+# -----------------------------------------------------
+#   Input:  in_i = 4, in_f = 1000 (0x03e8)
+#   Cycles averaged: 5000
+#   Sum of outputs:  20000
+#   Expected avg:    4.015259
+#   Measured avg:    4.000000
+#   Error:           -0.015259
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# =====================================================
+# TEST 9: Random: in_i=9, in_f=50000
+# -----------------------------------------------------
+#   Input:  in_i = 9, in_f = 50000 (0xc350)
+#   Cycles averaged: 5000
+#   Sum of outputs:  45000
+#   Expected avg:    9.762939
+#   Measured avg:    9.000000
+#   Error:           -0.762939
+#   Result: FAIL (error exceeds tolerance)
+# =====================================================
+# 
+# 
+# 
+# ========================================================
+#   TEST SUMMARY
+# ========================================================
+#   Total tests: 9
+#   Passed:      2
+#   Failed:      7
+# ========================================================
+#   SOME TESTS FAILED - Review results above
+# ========================================================
+# 
+# ** Note: $finish    : EE216A_Testbench.v(221)
+#    Time: 90299 ns  Iteration: 0  Instance: /EE216A_Testbench
+# End time: 21:00:08 on Nov 25,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
