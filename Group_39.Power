@@ -9,7 +9,7 @@ Report : power
         -analysis_effort low
 Design : M216A_TopModule
 Version: X-2025.06-SP3
-Date   : Tue Nov 25 23:16:56 2025
+Date   : Wed Nov 26 18:06:56 2025
 ****************************************
 
 
@@ -24,11 +24,11 @@ Wire Load Model Mode: segmented
 Design        Wire Load Model            Library
 ------------------------------------------------
 M216A_TopModule        ZeroWireload      N16ADFP_StdCellss0p72v125c
-M216A_TopModule_DW01_add_0_DW01_add_1
+M216A_TopModule_DW01_add_2_DW01_add_6
                        ZeroWireload      N16ADFP_StdCellss0p72v125c
-M216A_TopModule_DW01_add_1_DW01_add_2
+M216A_TopModule_DW01_add_1_DW01_add_4
                        ZeroWireload      N16ADFP_StdCellss0p72v125c
-M216A_TopModule_DW01_add_2_DW01_add_3
+M216A_TopModule_DW01_add_0_DW01_add_3
                        ZeroWireload      N16ADFP_StdCellss0p72v125c
 
 
@@ -45,11 +45,11 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-M216A_TopModule                        1.43e-02    0.173 5.18e+04    0.239 100.0
-  stage1/add_46 (M216A_TopModule_DW01_add_2_DW01_add_3)
-                                       2.41e-03 6.07e-03 4.58e+03 1.31e-02   5.5
-  stage2/add_46 (M216A_TopModule_DW01_add_1_DW01_add_2)
-                                       2.11e-03 5.25e-03 4.26e+03 1.16e-02   4.9
-  stage3/add_46 (M216A_TopModule_DW01_add_0_DW01_add_1)
-                                       1.52e-03 4.84e-03 4.25e+03 1.06e-02   4.4
+M216A_TopModule                        1.29e-02    0.109 3.75e+04    0.159 100.0
+  stage3/add_46 (M216A_TopModule_DW01_add_0_DW01_add_3)
+                                       1.59e-03 4.83e-03 4.25e+03 1.07e-02   6.7
+  stage1/add_46 (M216A_TopModule_DW01_add_1_DW01_add_4)
+                                       1.83e-03 6.10e-03 4.58e+03 1.25e-02   7.9
+  stage2/add_46 (M216A_TopModule_DW01_add_2_DW01_add_6)
+                                       1.74e-03 5.35e-03 4.60e+03 1.17e-02   7.3
 1

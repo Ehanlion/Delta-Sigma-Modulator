@@ -30,12 +30,12 @@ module mash_stage #(
     input wire                clk,
     input wire                rst_n,
     input wire [WIDTH-1:0]    in_val,
-    output reg [WIDTH-1:0]    e_out,
-    output reg                c_out
+    output wire [WIDTH-1:0]   e_out,  // Wire connected to accumulator
+    output wire               c_out   // Combinational carry output
 );
 
     // -------------------------------------------------------------------------
-    // Accumulator register
+    // Accumulator register (also serves as e_out directly)
     // -------------------------------------------------------------------------
     reg [WIDTH-1:0] accumulator;
 
@@ -46,23 +46,19 @@ module mash_stage #(
     assign sum = {1'b0, accumulator} + {1'b0, in_val};
 
     // -------------------------------------------------------------------------
-    // Sequential logic
+    // Outputs are combinational (reduces register count)
+    // -------------------------------------------------------------------------
+    assign e_out = accumulator;
+    assign c_out = sum[WIDTH];  // Combinational overflow signal
+
+    // -------------------------------------------------------------------------
+    // Sequential logic: only update accumulator
     // -------------------------------------------------------------------------
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            // Reset accumulator and outputs
             accumulator <= {WIDTH{1'b0}};
-            e_out <= {WIDTH{1'b0}};
-            c_out <= 1'b0;
         end else begin
-            // Update accumulator with the lower WIDTH bits
             accumulator <= sum[WIDTH-1:0];
-            
-            // Output the error (lower WIDTH bits of sum)
-            e_out <= sum[WIDTH-1:0];
-            
-            // Output the carry (MSB of sum)
-            c_out <= sum[WIDTH];
         end
     end
 

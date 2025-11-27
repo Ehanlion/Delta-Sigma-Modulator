@@ -3,7 +3,7 @@
 Report : area
 Design : M216A_TopModule
 Version: X-2025.06-SP3
-Date   : Tue Nov 25 23:16:52 2025
+Date   : Wed Nov 26 18:06:52 2025
 ****************************************
 
 Library(s) Used:
@@ -11,21 +11,21 @@ Library(s) Used:
     N16ADFP_StdCellss0p72v125c (File: /w/apps4/Synopsys/TSMC/CAD_TSMC-16-ADFP-FFC_Muse/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellss0p72v125c.db)
 
 Number of ports:                          185
-Number of nets:                           400
-Number of cells:                          189
-Number of combinational cells:             92
-Number of sequential cells:                94
+Number of nets:                           351
+Number of cells:                          140
+Number of combinational cells:             82
+Number of sequential cells:                55
 Number of macros/black boxes:               0
-Number of buf/inv:                         13
-Number of references:                      22
+Number of buf/inv:                          8
+Number of references:                      21
 
-Combinational area:                 63.711362
-Buf/Inv area:                        2.332800
-Noncombinational area:             107.205124
+Combinational area:                 60.963841
+Buf/Inv area:                        1.399680
+Noncombinational area:              62.726402
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (Wire load has zero net area)
 
-Total cell area:                   170.916485
+Total cell area:                   123.690244
 Total area:                 undefined
 
 Hierarchical area distribution
@@ -36,11 +36,11 @@ Hierarchical area distribution
 Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
                                   Total      Total    national  national   boxes   Design
 --------------------------------  ---------  -------  --------  ---------  ------  -------------------------------------
-M216A_TopModule                    170.9165    100.0   14.7226   107.2051  0.0000  M216A_TopModule
-stage1/add_46                       16.3296      9.6   16.3296     0.0000  0.0000  M216A_TopModule_DW01_add_2_DW01_add_3
-stage2/add_46                       16.3296      9.6   16.3296     0.0000  0.0000  M216A_TopModule_DW01_add_1_DW01_add_2
-stage3/add_46                       16.3296      9.6   16.3296     0.0000  0.0000  M216A_TopModule_DW01_add_0_DW01_add_1
+M216A_TopModule                    123.6902    100.0   11.7677    62.7264  0.0000  M216A_TopModule
+stage1/add_46                       16.3296     13.2   16.3296     0.0000  0.0000  M216A_TopModule_DW01_add_1_DW01_add_4
+stage2/add_46                       16.5370     13.4   16.5370     0.0000  0.0000  M216A_TopModule_DW01_add_2_DW01_add_6
+stage3/add_46                       16.3296     13.2   16.3296     0.0000  0.0000  M216A_TopModule_DW01_add_0_DW01_add_3
 --------------------------------  ---------  -------  --------  ---------  ------  -------------------------------------
-Total                                                  63.7114   107.2051  0.0000
+Total                                                  60.9638    62.7264  0.0000
 
 1

@@ -112,30 +112,16 @@ module M216A_TopModule (
     // ========================================================
     // FINAL OUTPUT COMBINATION
     // --------------------------------------------------------
-    // Build the Final Output Combiner...
-    // in_i and out_f -> OUT signal
-    // OUT signal is the final output
-    // in_i is 4b unsigned
-    // out_f is 4b signed
-    // OUT is temporarily stored as 5b signed
-    // OUT is then truncated to 4b unsigned
+    // Combinational output: in_i + out_f
+    // in_i is 4b unsigned, out_f is 4b signed
+    // Result is 4b unsigned (lower bits of signed sum)
     // ========================================================
-
-    reg [3:0] out_reg;
 
     // 5-bit signed intermediate to handle signed addition
     wire signed [4:0] out_sum_full = $signed({1'b0, in_i}) + $signed(out_f);
 
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            out_reg <= 4'd0;
-        end else begin
-            // Keep the lower 4 bits as the divide value
-            out_reg <= out_sum_full[3:0];
-        end
-    end
-
-    assign out = out_reg;
+    // Output is combinational (noise_shaper output is already registered)
+    assign out = out_sum_full[3:0];
 
 endmodule
 

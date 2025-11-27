@@ -41,25 +41,12 @@ module noise_shaper (
     reg c3_z2;  // c3 delayed by 2 cycles (c3[n-2])
 
     // -------------------------------------------------------------------------
-    // Intermediate signed terms for the noise shaping equation
+    // Simplified arithmetic: separate positive and negative contributions
+    // out_f = c1 + c2_z1 + c3_z2 + c3 - c2 - 2*c3_z1
+    //       = (c1 + c2_z1 + c3_z2 + c3) - (c2 + 2*c3_z1)
     // -------------------------------------------------------------------------
-    wire signed [2:0] term1;  // c1 (pass-through)
-    wire signed [2:0] term2;  // (z^-1 - 1)*c2 = c2[n-1] - c2[n]
-    wire signed [2:0] term3;  // (z^-1 - 1)^2*c3 = c3[n-2] - 2*c3[n-1] + c3[n]
-
-    // -------------------------------------------------------------------------
-    // Calculate terms using signed arithmetic
-    // -------------------------------------------------------------------------
-    // term1: c1 pass-through
-    assign term1 = $signed({2'b0, c1});
-    
-    // term2: first-order differentiator on c2
-    // (z^-1 - 1)*c2 = c2[n-1] - c2[n]
-    assign term2 = $signed({2'b0, c2_z1}) - $signed({2'b0, c2});
-    
-    // term3: second-order differentiator on c3
-    // (z^-1 - 1)^2*c3 = c3[n-2] - 2*c3[n-1] + c3[n]
-    assign term3 = $signed({2'b0, c3_z2}) - ($signed({1'b0, c3_z1, 1'b0})) + $signed({2'b0, c3});
+    wire [2:0] sum_pos = {2'b0, c1} + {2'b0, c2_z1} + {2'b0, c3_z2} + {2'b0, c3};  // 0 to 4
+    wire [1:0] sum_neg = {1'b0, c2} + {c3_z1, 1'b0};  // 0 to 3 (c2 + 2*c3_z1)
 
     // -------------------------------------------------------------------------
     // Sequential logic: Update delay registers and output
@@ -77,8 +64,8 @@ module noise_shaper (
             c3_z1 <= c3;
             c3_z2 <= c3_z1;
             
-            // Calculate output: sum of all three terms
-            out_f <= $signed(term1) + $signed(term2) + $signed(term3);
+            // Result = sum_pos - sum_neg (range: -3 to +4)
+            out_f <= $signed({1'b0, sum_pos}) - $signed({2'b0, sum_neg});
         end
     end
 
