@@ -209,4 +209,55 @@ The `compile_ultra -area_high_effort_script` alone provides optimal results for 
 5. Replaced basic `compile` with `compile_ultra -area_high_effort_script`
 6. Added power optimization directives (`set_leakage_optimization`, `set_dynamic_optimization`)
 
+---
+
+# Final Sweep - Optimization Limit Analysis
+
+**Date:** 2025-11-26
+
+The following additional optimizations were attempted to determine if further improvements were possible:
+
+## TCL Options Tested (No Improvement)
+
+| Option Tested | Rationale | Result |
+|---------------|-----------|--------|
+| `-retime` | Register retiming for better timing/area balance | No change in area/power |
+| Tighter clock (1.5ns) | Force more aggressive optimization | Power INCREASED to 0.146mW (faster cells needed) |
+| `-timing_high_effort_script` | Balance timing and area | No improvement |
+| `-gate_clock` | Enable clock gating | No gating opportunities in this design |
+
+## RTL Analysis (Already Optimal)
+
+| Component | Analysis | Conclusion |
+|-----------|----------|------------|
+| `mash_stage.v` | Single 16-bit accumulator, combinational outputs | Minimal - cannot reduce further without breaking functionality |
+| `noise_shaper.v` | 3 delay FFs + 4-bit output FF | Required for transfer function; arithmetic already simplified |
+| `M216A_TopModule.v` | Purely combinational output logic | No registers to remove |
+
+## Key Finding: Design at Optimization Limit
+
+The design has reached its optimization limit because:
+
+1. **Register count is minimal**: Only essential flip-flops remain:
+   - 3 × 16-bit accumulators (48 FFs) - required for integration
+   - 3 × 1-bit delay registers in noise_shaper - required for transfer function  
+   - 4-bit output register in noise_shaper - required for output timing
+
+2. **Combinational logic is minimal**: The adders and noise shaper arithmetic cannot be reduced without changing the algorithm.
+
+3. **Synthesis tool is at peak**: `compile_ultra -area_high_effort_script` achieves the best results; additional options provide no benefit.
+
+## Final Optimized Design Metrics
+
+| Metric | Value |
+|--------|-------|
+| **Total Cell Area** | 118.82 |
+| **Total Power** | 0.111 mW |
+| **Setup Slack** | 0.73 ns (MET) |
+| **Hold Slack** | 0.02 ns (MET) |
+| Flip-Flop Count | 55 (48 accumulator + 3 delay + 4 output) |
+
+**Total Improvement from Baseline:**
+- Area: **-30.5%** (170.92 → 118.82)
+- Power: **-53.6%** (0.239 mW → 0.111 mW)
 

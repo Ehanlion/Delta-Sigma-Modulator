@@ -40,6 +40,7 @@ set_operating_conditions -min ff0p88vm40c -max ss0p72v125c
 ################################################################################
 
 # Clock configuration for 500 MHz (2.0 ns period)
+# Keeping original timing to allow smaller/slower cells for power savings
 set Tclk 2.0
 set TCU  0.05
 set IN_DEL 0.4
@@ -84,7 +85,6 @@ ungroup -flatten -all
 uniquify
 
 # Primary compilation: compile_ultra with aggressive area optimization
-# This provides the best area/power results for this design
 compile_ultra -area_high_effort_script
 
 # Final pass: fix hold time violations
