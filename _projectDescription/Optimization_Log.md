@@ -122,21 +122,91 @@ This document tracks all optimization attempts, their rationale, and results.
 
 ---
 
-## Summary - Final Results
+# TCL Synthesis Script Optimizations
 
-| Metric | Baseline | Final | Improvement |
-|--------|----------|-------|-------------|
-| **Total Cell Area** | 170.92 | 123.69 | **-27.6%** |
-| Combinational Area | 63.71 | 60.96 | -4.3% |
+The following optimizations were made to `Group_39.tcl` to further improve area and power.
+
+---
+
+## TCL Optimization 5: Use compile_ultra with Area Focus
+
+**Date:** 2025-11-26
+
+**Change:** In `Group_39.tcl`, replaced the basic compilation sequence:
+```tcl
+compile -only_design_rule
+compile -map high
+compile -boundary_optimization
+compile -only_hold_time
+```
+With advanced compilation using `compile_ultra`:
+```tcl
+compile_ultra -area_high_effort_script
+compile_ultra -incremental -only_hold_time
+```
+
+**Rationale:** `compile_ultra` performs more advanced optimization including:
+- Automatic datapath optimization
+- Better logic restructuring
+- More aggressive area reduction
+- `-area_high_effort_script` enables maximum area optimization effort
+
+**Additional Settings Added:**
+- `set_leakage_optimization true` - Optimize for leakage power
+- `set_dynamic_optimization true` - Optimize for dynamic power
+
+**Results:**
+| Metric | Before (RTL Opt) | After (TCL Opt) | Change |
+|--------|------------------|-----------------|--------|
+| Total Cell Area | 123.69 | 118.82 | **-3.9%** |
+| Combinational Area | 60.96 | 56.09 | -8.0% |
+| Total Power | 0.159 mW | 0.111 mW | **-30.2%** |
+| Setup Slack | 1.00 ns | 0.73 ns | Reduced (still MET) |
+| Hold Slack | 0.00 ns | 0.02 ns | Improved |
+
+**Cumulative from Original Baseline:**
+| Metric | Baseline | Current | Total Change |
+|--------|----------|---------|--------------|
+| Total Cell Area | 170.92 | 118.82 | **-30.5%** |
+| Total Power | 0.239 mW | 0.111 mW | **-53.6%** |
+
+**Status:** ✅ SUCCESS - All tests pass (EE216A_Testbench: 9/9), timing met
+
+---
+
+## TCL Optimization Attempts (No Further Improvement)
+
+The following TCL modifications were tested but did not provide additional improvement:
+- `-timing_high_effort_script` - No area/power benefit
+- `-gate_clock` - No improvement for this design (no clock gating opportunities)
+- `set_size_only` - Results identical to compile_ultra alone
+- `set_max_transition` constraints - No improvement
+
+The `compile_ultra -area_high_effort_script` alone provides optimal results for this design.
+
+---
+
+# Final Summary - All Optimizations
+
+| Metric | Original Baseline | Final Optimized | Total Improvement |
+|--------|-------------------|-----------------|-------------------|
+| **Total Cell Area** | 170.92 | 118.82 | **-30.5%** |
+| Combinational Area | 63.71 | 56.09 | -12.0% |
 | Noncombinational Area | 107.21 | 62.73 | -41.5% |
-| **Total Power** | 0.239 mW | 0.159 mW | **-33.5%** |
-| Setup Slack | 1.10 ns | 1.00 ns | Still MET |
-| Hold Slack | 0.00 ns | 0.00 ns | Still MET |
+| **Total Power** | 0.239 mW | 0.111 mW | **-53.6%** |
+| Setup Slack | 1.10 ns | 0.73 ns | Still MET |
+| Hold Slack | 0.00 ns | 0.02 ns | Improved |
 
-### Optimizations Applied:
-1. Removed redundant e_out registers (48 FFs saved)
-2. Removed output register in TopModule (4 FFs saved)
-3. Simplified noise_shaper arithmetic
-4. Made c_out combinational (3 FFs saved)
+### All Optimizations Applied:
+
+**RTL Optimizations (Verilog):**
+1. Removed redundant e_out registers in mash_stage.v (48 FFs saved)
+2. Removed output register in M216A_TopModule.v (4 FFs saved)
+3. Simplified noise_shaper.v arithmetic
+4. Made c_out combinational in mash_stage.v (3 FFs saved)
+
+**Synthesis Optimizations (TCL):**
+5. Replaced basic `compile` with `compile_ultra -area_high_effort_script`
+6. Added power optimization directives (`set_leakage_optimization`, `set_dynamic_optimization`)
 
 

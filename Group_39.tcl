@@ -66,18 +66,29 @@ set_output_delay -min $OUT_DEL_MIN -clock "clk" [all_outputs]
 set_max_area 0.0
 
 ################################################################################
+# POWER/AREA OPTIMIZATION SETTINGS                                             #
+################################################################################
+
+# Enable leakage power optimization  
+set_leakage_optimization true
+
+# Enable dynamic power optimization
+set_dynamic_optimization true
+
+################################################################################
 # COMPILATION                                                                  #
 ################################################################################
 
-# Flatten hierarchy for optimization
+# Flatten hierarchy for better optimization
 ungroup -flatten -all
 uniquify
 
-# Multi-step compilation for best results
-compile -only_design_rule
-compile -map high
-compile -boundary_optimization
-compile -only_hold_time
+# Primary compilation: compile_ultra with aggressive area optimization
+# This provides the best area/power results for this design
+compile_ultra -area_high_effort_script
+
+# Final pass: fix hold time violations
+compile_ultra -incremental -only_hold_time
 
 ################################################################################
 # REPORT GENERATION                                                            #
