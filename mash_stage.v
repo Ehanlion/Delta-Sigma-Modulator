@@ -34,26 +34,18 @@ module mash_stage #(
     output wire               c_out   // Combinational carry output
 );
 
-    // -------------------------------------------------------------------------
-    // Accumulator register (also serves as e_out directly)
-    // -------------------------------------------------------------------------
+    // Register for Accumulator
     reg [WIDTH-1:0] accumulator;
 
-    // -------------------------------------------------------------------------
-    // Sum calculation (WIDTH+1 bits to capture carry)
-    // -------------------------------------------------------------------------
+    // Sum calculation
     wire [WIDTH:0] sum;
     assign sum = {1'b0, accumulator} + {1'b0, in_val};
 
-    // -------------------------------------------------------------------------
-    // Outputs are combinational (reduces register count)
-    // -------------------------------------------------------------------------
+    // Outputs
     assign e_out = accumulator;
     assign c_out = sum[WIDTH];  // Combinational overflow signal
 
-    // -------------------------------------------------------------------------
-    // Sequential logic: only update accumulator
-    // -------------------------------------------------------------------------
+    // Sequential, only update accumulator
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             accumulator <= {WIDTH{1'b0}};
