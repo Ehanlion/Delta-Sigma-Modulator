@@ -261,3 +261,27 @@ The design has reached its optimization limit because:
 - Area: **-30.5%** (170.92 → 118.82)
 - Power: **-53.6%** (0.239 mW → 0.111 mW)
 
+# Added Sweep for Tapering
+
+We can taper each of the additional Stage 2 and Stage 3 Mash stages. This process involves reducing the size of the error wires & width for each succesive stage, making the assumption that the LSB error bits are negligible if we just siphon the MSBs of the incoming signals. 
+
+This is the tapering we performed:
+- e2 goes from 16 bits (full) down to 12 bits, using only bits [15:4] of e1
+- e3 goes from 16 bits (full) down to 10 bits, using only bits [11:2] of e2
+
+Results:
+- Power: Total goes from 0.111 mW down to 0.0909 mW
+- Area: Total area goes from 118.82 down to 97.04 
+- Area: Combinational area drops from 56.09 down to 45.72
+- Area: Noncombinational area drops from 62.73 down to 51.32
+
+That gives the new final summary as follows:
+
+| Metric | Original Baseline | Final Optimized | Total Improvement |
+|--------|-------------------|-----------------|-------------------|
+| **Total Cell Area** | 170.92 | 97.04 | **-42%** |
+| Combinational Area | 63.71 | 45.72 | **-28%** |
+| Noncombinational Area | 107.21 | 51.32 | **-52%** |
+| **Total Power** | 0.239 mW | 0.0909 mW | **-62%** |
+| Setup Slack | 1.10 ns | 0.73 ns | Still MET |
+| Hold Slack | 0.00 ns | 0.02 ns | Improved |
