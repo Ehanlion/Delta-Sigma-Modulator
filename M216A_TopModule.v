@@ -40,7 +40,10 @@ module M216A_TopModule (
     // Remember from the project diagram...
     // 3 Integrator stages, each produce a 16b error signal, e1, e2, e3 (tossed)
     // 3 Integrators, each produce a 1b carry signals, c1, c2, c3
-    wire [15:0] e1, e2, e3;         // error outputs
+    // Tapering supports reducing succesive stage sizes for optimization
+    wire [15:0] e1;
+    wire [11:0] e2; // 12 bits
+    wire [9:0] e3; // 10 bits
     wire        c1, c2, c3;         // carry outputs (1b Quantizer)
 
     // ========================================================
@@ -68,22 +71,22 @@ module M216A_TopModule (
 
     // Stage 2: integrates e1
     mash_stage #(
-        .WIDTH   (16)
+        .WIDTH   (12)
     ) stage2 (
         .clk     (clk),
         .rst_n   (rst_n),
-        .in_val  (e1),
+        .in_val  (e1[15:4]),
         .e_out   (e2),
         .c_out   (c2)
     );
 
     // Stage 3: integrates e2
     mash_stage #(
-        .WIDTH   (16)
+        .WIDTH   (10)
     ) stage3 (
         .clk     (clk),
         .rst_n   (rst_n),
-        .in_val  (e2),
+        .in_val  (e2[11:2]),
         .e_out   (e3),
         .c_out   (c3)
     );

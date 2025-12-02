@@ -8,7 +8,7 @@ Report : timing
         -max_paths 10
 Design : M216A_TopModule
 Version: X-2025.06-SP3
-Date   : Wed Nov 26 23:14:04 2025
+Date   : Mon Dec  1 20:29:46 2025
 ****************************************
 
 Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
@@ -30,7 +30,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -82,7 +82,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -134,7 +134,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -184,7 +184,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -234,7 +234,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -285,7 +285,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -336,7 +336,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -385,7 +385,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.40       0.40 f
   in_f[0] (in)                             0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                    0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                    0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)          0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)          0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)          0.04       0.55 f
@@ -434,7 +434,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)                             0.00       0.00
   input external delay                                    0.40       0.40 f
   in_f[0] (in)                                            0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                                   0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                                   0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)                         0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)                         0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)                         0.04       0.55 f
@@ -482,7 +482,7 @@ Wire Load Model Mode: segmented
   clock network delay (ideal)                             0.00       0.00
   input external delay                                    0.40       0.40 f
   in_f[0] (in)                                            0.00       0.40 f
-  U16/Z (AN2D1BWP20P90)                                   0.02       0.42 f
+  U10/Z (AN2D1BWP20P90)                                   0.02       0.42 f
   intadd_0/U18/CO (FA1D1BWP20P90)                         0.04       0.46 f
   intadd_0/U17/CO (FA1D1BWP20P90)                         0.04       0.50 f
   intadd_0/U16/CO (FA1D1BWP20P90)                         0.04       0.55 f
@@ -497,9 +497,9 @@ Wire Load Model Mode: segmented
   intadd_0/U7/CO (FA1D1BWP20P90)                          0.04       0.94 f
   intadd_0/U6/CO (FA1D1BWP20P90)                          0.04       0.99 f
   intadd_0/U5/CO (FA1D1BWP20P90)                          0.04       1.03 f
-  intadd_0/U4/S (FA1D1BWP20P90)                           0.06       1.10 r
-  stage1/accumulator_reg[15]/D (DFCNQD1BWP16P90)          0.00       1.10 r
-  data arrival time                                                  1.10
+  intadd_0/U4/S (FA1D1BWP20P90)                           0.06       1.09 r
+  stage1/accumulator_reg[15]/D (DFCNQD1BWP16P90)          0.00       1.09 r
+  data arrival time                                                  1.09
 
   clock clk (rise edge)                                   2.00       2.00
   clock network delay (ideal)                             0.00       2.00
@@ -509,7 +509,7 @@ Wire Load Model Mode: segmented
   data required time                                                 1.93
   --------------------------------------------------------------------------
   data required time                                                 1.93
-  data arrival time                                                 -1.10
+  data arrival time                                                 -1.09
   --------------------------------------------------------------------------
   slack (MET)                                                        0.83
 
