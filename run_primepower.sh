@@ -32,7 +32,7 @@ fi
 
 # Run PrimeTime/PrimePower
 echo "Running pt_shell..."
-pt_shell -f Group_39_PrimeTimePower.tcl > pt_power.log 2>&1
+pt_shell -f Group_39_PrimeTimePower.tcl
 
 # Check results
 if [ $? -eq 0 ]; then
@@ -54,4 +54,3 @@ else
     echo "Check pt_power.log for details"
     exit 1
 fi
-

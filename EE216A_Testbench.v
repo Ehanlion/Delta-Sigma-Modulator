@@ -107,7 +107,7 @@ module EE216A_Testbench;
 
             // Check pass/fail (tolerance for averaging error)
             // Increased error tolerance to 5% to account for finite averaging
-            error_tolerance = 0.05;
+            error_tolerance = 0.01;
 
             $display("=====================================================");
             $display("TEST %0d: %0s", test_count, test_name);

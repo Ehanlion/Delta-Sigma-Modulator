@@ -77,7 +77,6 @@ update_power
 
 # Generate power reports
 report_power -verbose > Group_39_Prime.Power
-report_area -hierarchy > Group_39_Prime.Area
 
 ################################################################################
 # Summary

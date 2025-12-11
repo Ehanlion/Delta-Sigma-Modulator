@@ -22,7 +22,7 @@ fi
 
 # Run Design Compiler
 echo "Running dc_shell..."
-dc_shell -f Group_39_DC_PowerOnly.tcl > dc_power.log 2>&1
+dc_shell -f Group_39_DC.tcl
 
 # Check results
 if [ $? -eq 0 ]; then
