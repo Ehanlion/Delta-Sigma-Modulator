@@ -43,7 +43,7 @@ module M216A_TopModule (
     // Tapering supports reducing succesive stage sizes for optimization
     wire [15:0] e1;
     wire [11:0] e2; // 12 bits
-    wire [9:0] e3; // 10 bits
+    wire [7:0] e3; // 8 bits
     wire        c1, c2, c3;         // carry outputs (1b Quantizer)
 
     // ========================================================
@@ -82,11 +82,11 @@ module M216A_TopModule (
 
     // Stage 3: integrates e2
     mash_stage #(
-        .WIDTH   (10)
+        .WIDTH   (8)
     ) stage3 (
         .clk     (clk),
         .rst_n   (rst_n),
-        .in_val  (e2[11:2]),
+        .in_val  (e2[11:4]),
         .e_out   (e3),
         .c_out   (c3)
     );

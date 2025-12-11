@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup variables for file names
-Prefix="Group_39"
+Prefix="Group_39_DC"
 Area="Area"
 Power="Power"
 Hold="TimingHold"
@@ -26,16 +26,34 @@ OUTPUT_FILE="results/deltaSigmaResults${counter}.txt"
     echo "Generated on: $(date)"
     echo ""
     
-    # Extract Power Results
+    # Extract Power Results (verbose format)
     echo "========================================================"
     echo "                  POWER RESULTS"
     echo "========================================================"
     echo ""
-    echo "Module: M216A_TopModule"
+    
+    # Extract dynamic power breakdown
+    echo "Dynamic Power Breakdown:"
+    echo "------------------------"
+    grep "Cell Internal Power" $Prefix.$Power | head -1
+    grep "Net Switching Power" $Prefix.$Power | head -1
+    grep "Total Dynamic Power" $Prefix.$Power | head -1
     echo ""
-    printf "%-30s %12s %12s %12s %12s\n" "Hierarchy" "Switch(mW)" "Int(mW)" "Leak(nW)" "Total(mW)"
-    printf "%-30s %12s %12s %12s %12s\n" "----------" "-----------" "-------" "--------" "---------"
-    grep "^M216A_TopModule" $Prefix.$Power | grep -E "[0-9]+\.[0-9]+e" | head -1 | awk '{printf "%-30s %12s %12s %12s %12s\n", $1, $2, $3, $4, $5}'
+    
+    # Extract leakage power
+    grep "Cell Leakage Power" $Prefix.$Power | head -1
+    echo ""
+    
+    # Extract power by group (verbose format table)
+    echo "Power by Component Group:"
+    echo "-------------------------"
+    awk '/Power Group/,/^Total/ {print}' $Prefix.$Power | head -10
+    echo ""
+
+    # Get the total power as well
+    echo "Total Power:"
+    echo "-------------------------"
+    grep "Total" $Prefix.$Power
     echo ""
     
     # Extract Area Results

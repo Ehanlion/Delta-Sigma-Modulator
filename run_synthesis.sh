@@ -47,6 +47,8 @@ echo "[3/4] Running Design Compiler..."
 echo "  - Design: M216A_TopModule"
 echo "  - Clock: 500 MHz (2.0 ns period)"
 echo ""
+
+# Actually boot dc_shell and run the synthesis script
 dc_shell -f Group_39.tcl
 
 # Check if synthesis completed successfully
@@ -61,30 +63,30 @@ if [ $? -eq 0 ]; then
     # Check and display file sizes for generated reports
     if [ -f Group_39.Area ]; then
         size=$(wc -l < Group_39.Area)
-        echo "  ✓ Group_39.Area         ($size lines)"
+        echo "  + Group_39.Area         ($size lines)"
     else
-        echo "  ✗ Group_39.Area         (NOT GENERATED)"
+        echo "  x Group_39.Area         (NOT GENERATED)"
     fi
     
     if [ -f Group_39.Power ]; then
         size=$(wc -l < Group_39.Power)
-        echo "  ✓ Group_39.Power        ($size lines)"
+        echo "  + Group_39.Power        ($size lines, verbose)"
     else
-        echo "  ✗ Group_39.Power        (NOT GENERATED)"
+        echo "  x Group_39.Power        (NOT GENERATED)"
     fi
     
     if [ -f Group_39.TimingSetup ]; then
         size=$(wc -l < Group_39.TimingSetup)
-        echo "  ✓ Group_39.TimingSetup  ($size lines)"
+        echo "  + Group_39.TimingSetup  ($size lines)"
     else
-        echo "  ✗ Group_39.TimingSetup  (NOT GENERATED)"
+        echo "  x Group_39.TimingSetup  (NOT GENERATED)"
     fi
     
     if [ -f Group_39.TimingHold ]; then
         size=$(wc -l < Group_39.TimingHold)
-        echo "  ✓ Group_39.TimingHold   ($size lines)"
+        echo "  + Group_39.TimingHold   ($size lines)"
     else
-        echo "  ✗ Group_39.TimingHold   (NOT GENERATED)"
+        echo "  x Group_39.TimingHold   (NOT GENERATED)"
     fi
     
     echo ""
@@ -93,15 +95,15 @@ if [ $? -eq 0 ]; then
     echo "========================================================"
     
     if [ -f M216A_TopModule.vg ]; then
-        echo "  ✓ M216A_TopModule.vg    (gate-level netlist)"
+        echo "  + M216A_TopModule.vg    (gate-level netlist)"
     fi
     
     if [ -f M216A_TopModule.sdf ]; then
-        echo "  ✓ M216A_TopModule.sdf   (timing delays)"
+        echo "  + M216A_TopModule.sdf   (timing delays)"
     fi
     
     if [ -f M216A_TopModule.sdc ]; then
-        echo "  ✓ M216A_TopModule.sdc   (timing constraints)"
+        echo "  + M216A_TopModule.sdc   (timing constraints)"
     fi
     
     echo ""

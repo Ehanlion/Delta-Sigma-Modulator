@@ -104,7 +104,8 @@ report_timing -path full -delay min -max_paths 10 -nworst 2 > Group_39.TimingHol
 report_area -hierarchy > Group_39.Area
 
 # Generate Power Report
-report_power -hier -hier_level 2 > Group_39.Power
+# I want the verbose report because I want to see the detailed power breakdown
+report_power -verbose > Group_39.Power
 
 # Additional reports for debugging (optional)
 report_resources > Group_39.resources

@@ -1,0 +1,193 @@
+================================================================================
+                    POWER REPORT STANDARDIZATION
+                         Group 39 - M216A
+================================================================================
+
+CHANGES MADE:
+-------------
+
+1. VERBOSE POWER FORMAT (ALL SCRIPTS)
+   + All power reports now use "report_power -verbose" format
+   + Consistent output format across DC, PrimePower, and synthesis
+   + Shows detailed breakdown: Internal/Switching/Leakage power
+
+2. ASCII-ONLY CHARACTERS (ALL SCRIPTS)
+   + Replaced checkmark (✓) with plus (+)
+   + Replaced cross (✗) with x
+   + Replaced warning (⚠) with exclamation (!)
+   + Replaced arrow (→) with dash-greater (->)
+   + Replaced micro (µ) with u (uW instead of µW)
+
+================================================================================
+FILE MODIFICATIONS
+================================================================================
+
+1. Group_39.tcl (Synthesis Script)
+   -----------------------------------
+   BEFORE: report_power -hier -hier_level 2 > Group_39.Power
+   AFTER:  report_power -verbose > Group_39.Power
+   
+   OUTPUT FORMAT:
+     Cell Internal Power  =  XX.XXXX uW
+     Net Switching Power  =  XX.XXXX uW
+     Total Dynamic Power  =  XX.XXXX uW
+     Cell Leakage Power   =  XX.XXXX uW
+
+2. Group_39_PrimeTimePower.tcl (PrimePower Script)
+   ---------------------------------------------------
+   BEFORE: report_power > Group_39_Prime.Power
+           report_power -verbose > Group_39_Prime.Power_verbose
+           report_power -hierarchy -levels 2 > Group_39_Prime.Power_hier
+   
+   AFTER:  report_power -verbose > Group_39_Prime.Power
+           (removed extra verbose and hierarchical reports)
+   
+   OUTPUT FORMAT: Same verbose format as synthesis
+
+3. Group_39_DC_PowerOnly.tcl (DC Comparison Script)
+   ----------------------------------------------------
+   BEFORE: report_power -hier -hier_level 2 > Group_39_DC.Power
+   AFTER:  report_power -verbose > Group_39_DC.Power
+   
+   OUTPUT FORMAT: Same verbose format
+
+4. reconstruct_results.sh (Results Parser)
+   ------------------------------------------
+   UPDATED to parse verbose power format:
+   - Extracts "Cell Internal Power"
+   - Extracts "Net Switching Power"
+   - Extracts "Total Dynamic Power"
+   - Extracts "Cell Leakage Power"
+   - Shows power by component group table
+
+5. run_synthesis.sh (Synthesis Runner)
+   --------------------------------------
+   ASCII changes:
+   - ✓ -> +  (success indicators)
+   - ✗ -> x  (failure indicators)
+   - Added "verbose" note to power report
+
+6. run_primepower.sh (PrimePower Runner)
+   ----------------------------------------
+   ASCII changes:
+   - ✓ -> +  (success)
+   - ✗ -> x  (failure)
+   - ⚠ -> !  (warning)
+   - µW -> uW (micro symbol)
+   
+   Power parsing updated for verbose format:
+   - Reads "Total Dynamic Power = XX.XXXX uW"
+
+7. run_power_comparison.sh (Comparison Script)
+   ----------------------------------------------
+   ASCII changes:
+   - ✓ -> +  (success)
+   - ✗ -> x  (failure)
+   - ⚠ -> !  (warning)
+   - → -> ->  (arrow)
+   - µW -> uW (micro symbol)
+   
+   Power parsing updated for verbose format:
+   - DC: Reads "Total Dynamic Power = XX.XXXX uW"
+   - Prime: Reads "Total Dynamic Power = XX.XXXX uW"
+
+================================================================================
+VERBOSE POWER FORMAT EXAMPLE
+================================================================================
+
+From Group_39.Power (current format):
+
+    Cell Internal Power  =  74.9667 uW   (89%)
+    Net Switching Power  =   9.5691 uW   (11%)
+                           ---------
+    Total Dynamic Power  =  84.5357 uW  (100%)
+    
+    Cell Leakage Power   =   2.4483 uW
+    
+    Power Group      Internal    Switching    Leakage      Total
+    -------------------------------------------------------------
+    clock_network    5.2141e-02  0.0000       0.0000       5.2141e-02
+    register         9.7131e-03  4.9521e-03   1.5231e+03   1.6188e-02
+    combinational    1.3112e-02  4.6170e-03   925.1459     1.8654e-02
+
+This format provides:
+  + Clear breakdown of power components
+  + Percentage contribution of each component
+  + Detailed power by functional group
+  + Easy to parse programmatically
+
+================================================================================
+ASCII CHARACTER MAPPING
+================================================================================
+
+Symbol Changes:
+  ✓  ->  +   (plus sign, success/present)
+  ✗  ->  x   (lowercase x, failure/missing)
+  ⚠  ->  !   (exclamation, warning)
+  →  ->  ->  (dash-greater, arrow/pointer)
+  µ  ->  u   (lowercase u, micro prefix)
+
+Example Before:
+  ✓ Group_39.Power (136.2 µW)
+  ✗ VCD file not found
+  ⚠ Power outside range
+  → Use PrimePower result
+
+Example After:
+  + Group_39.Power (136.2 uW)
+  x VCD file not found
+  ! Power outside range
+  -> Use PrimePower result
+
+================================================================================
+BENEFITS
+================================================================================
+
+1. CONSISTENCY
+   + All power reports use same verbose format
+   + Easy to compare across different tools
+   + Standardized parsing in reconstruct_results.sh
+
+2. PORTABILITY
+   + ASCII-only characters work on all terminals
+   + No encoding issues
+   + Works with standard keyboards
+   + Compatible with all text editors
+
+3. CLARITY
+   + Verbose format shows detailed power breakdown
+   + Clear component-level analysis
+   + Easier debugging and optimization
+
+4. AUTOMATION
+   + Consistent format enables reliable parsing
+   + reconstruct_results.sh can extract all metrics
+   + Scripts work across different environments
+
+================================================================================
+VERIFICATION
+================================================================================
+
+To verify changes, run:
+
+  ./run_synthesis.sh          # Generates Group_39.Power (verbose)
+  ./run_testbench.sh          # Generates VCD
+  ./run_power_comparison.sh   # Compares DC vs Prime (both verbose)
+  ./reconstruct_results.sh    # Parses verbose format
+
+All outputs should now use:
+  + ASCII-only characters (no special symbols)
+  + Verbose power format (detailed breakdown)
+  + Consistent formatting across all scripts
+
+================================================================================
+                         STANDARDIZATION COMPLETE
+================================================================================
+
+All scripts updated to use:
+  + Verbose power reports (-verbose flag)
+  + ASCII-only characters (no Unicode)
+  + Consistent output formatting
+  + Reliable parsing in reconstruct_results.sh
+
+================================================================================
