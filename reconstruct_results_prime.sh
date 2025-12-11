@@ -18,7 +18,6 @@ OUTPUT_FILE="results/deltaSigmaResults${counter}.txt"
 
 # Start writing to output file
 {
-    
     # Extract Power Results (verbose format)
     echo "========================================================"
     echo "                  POWER RESULTS"

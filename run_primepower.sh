@@ -37,20 +37,13 @@ pt_shell -f Group_39_PrimeTimePower.tcl
 # Check results
 if [ $? -eq 0 ]; then
     echo ""
-    echo "========================================================"
-    echo "  Generated Files:"
-    echo "========================================================"
-    
     [ -f Group_39_Prime.Power ] && echo "  + Group_39_Prime.Power"
     [ -f Group_39_Prime.TimingSetup ] && echo "  + Group_39_Prime.TimingSetup"
     [ -f Group_39_Prime.TimingHold ] && echo "  + Group_39_Prime.TimingHold"
     [ -f Group_39_Prime.Area ] && echo "  + Group_39_Prime.Area"
-    
-    echo "========================================================"
     echo ""
 else
     echo ""
     echo "ERROR: Analysis failed!"
-    echo "Check pt_power.log for details"
     exit 1
 fi

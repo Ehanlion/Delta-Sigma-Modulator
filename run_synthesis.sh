@@ -2,18 +2,6 @@
 
 # ============================================================================
 # Script: run_synthesis.sh
-# Description:
-#   Runs Design Compiler synthesis for Group 39 M216A project
-#   
-#   This script:
-#     1. Sources the tool setup
-#     2. Creates necessary directories
-#     3. Runs dc_shell with Group_39.tcl
-#     4. Generates required reports:
-#        - Group_39.Area
-#        - Group_39.Power
-#        - Group_39.TimingSetup
-#        - Group_39.TimingHold
 # ============================================================================
 
 echo "========================================================"
@@ -90,10 +78,6 @@ if [ $? -eq 0 ]; then
     fi
     
     echo ""
-    echo "========================================================"
-    echo "  Additional Files:"
-    echo "========================================================"
-    
     if [ -f M216A_TopModule.vg ]; then
         echo "  + M216A_TopModule.vg    (gate-level netlist)"
     fi
@@ -105,18 +89,11 @@ if [ $? -eq 0 ]; then
     if [ -f M216A_TopModule.sdc ]; then
         echo "  + M216A_TopModule.sdc   (timing constraints)"
     fi
-    
     echo ""
-    echo "========================================================"
-    echo "  Synthesis log saved to: command.log"
-    echo "========================================================"
 else
     echo ""
     echo "[4/4] ERROR: Synthesis failed!"
     echo ""
-    echo "Check command.log for details"
     exit 1
 fi
-
-echo ""
 

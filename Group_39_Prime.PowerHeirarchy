@@ -4,7 +4,7 @@ Report : Averaged Power
 	-levels 2
 Design : M216A_TopModule
 Version: X-2025.06-SP2
-Date   : Wed Dec 10 19:26:39 2025
+Date   : Wed Dec 10 19:48:45 2025
 ****************************************
 
 
@@ -12,5 +12,5 @@ Date   : Wed Dec 10 19:26:39 2025
                                       Int      Switch   Leak     Total
 Hierarchy                             Power    Power    Power    Power    %
 ----------------------------------------------------------------------------------
-M216A_TopModule                       1.13e-04 1.43e-05 3.22e-08 1.28e-04 100.0
+M216A_TopModule                       1.07e-04 1.23e-05 3.16e-08 1.19e-04 100.0
 1

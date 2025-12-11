@@ -2,15 +2,6 @@
 
 # ============================================================================
 # Script: run_testbench.sh
-# Description:
-#   Headless ModelSim simulation script for M216A Delta-Sigma Modulator
-#   
-#   This script:
-#     1. Sources the tool setup
-#     2. Creates/cleans the work library
-#     3. Compiles all Verilog source files
-#     4. Runs the testbench in command-line mode
-#     5. Displays results to console
 # ============================================================================
 
 echo "========================================================"
@@ -69,11 +60,8 @@ if [ $? -eq 0 ]; then
     echo ""
     echo "[5/5] Simulation completed successfully!"
     echo ""
-    echo "========================================================"
-    echo "  Output files generated:"
-    echo "    - M216A_TopModule.vcd (waveform data)"
-    echo "    - transcript (simulation log)"
-    echo "========================================================"
+    echo "Generated vcd file: M216A_TopModule.vcd"
+    echo ""
 else
     echo ""
     echo "[5/5] ERROR: Simulation failed!"

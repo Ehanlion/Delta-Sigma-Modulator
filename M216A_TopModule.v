@@ -20,6 +20,8 @@
 //         stage2 integrates e1
 //         stage3 integrates e2
 //       Each stage outputs a carry bit (c1/c2/c3) and an error term (e1/e2/e3).
+//       The error terms are tapered to reduce the number of bits in each stage.
+//       e1 is full 16 bits, e2 is 12 bits, e3 is 8 bits.
 //
 //     - A noise_shaper block combines c1, c2, c3 to produce a small signed
 //       fractional correction out_f in approximately [-3..+4].
@@ -50,7 +52,7 @@ module M216A_TopModule (
     // INTEGRATOR STAGES
     // --------------------------------------------------------
     // Build the Integrators together...
-    // Input on one end is in_
+    // Input on one end is in_f
     // in_f -> stage 1
     // e1 -> stage 2
     // e2 -> stage 3
@@ -71,7 +73,7 @@ module M216A_TopModule (
 
     // Stage 2: integrates e1
     mash_stage #(
-        .WIDTH   (12)
+        .WIDTH   (12) // tapered to 12 bits
     ) stage2 (
         .clk     (clk),
         .rst_n   (rst_n),
@@ -82,7 +84,7 @@ module M216A_TopModule (
 
     // Stage 3: integrates e2
     mash_stage #(
-        .WIDTH   (8)
+        .WIDTH   (8) // tapered to 8 bits
     ) stage3 (
         .clk     (clk),
         .rst_n   (rst_n),

@@ -88,7 +88,7 @@ uniquify
 compile_ultra -area_high_effort_script
 
 # Final pass: fix hold time violations
-compile_ultra -incremental -only_hold_time
+# compile_ultra -incremental -only_hold_time
 
 ################################################################################
 # REPORT GENERATION                                                            #
@@ -127,16 +127,6 @@ write_sdf -version 1.0 -context verilog ${DESIGN_NAME}.sdf
 set_propagated_clock [all_clocks]
 write_sdc ${DESIGN_NAME}.sdc
 
-################################################################################
-# SUMMARY                                                                      #
-################################################################################
-
-puts ""
-puts "========================================================"
-puts "  SYNTHESIS COMPLETE - GROUP 39"
-puts "========================================================"
-puts "  Design: $DESIGN_NAME"
-puts "  Clock Period: ${Tclk} ns (500 MHz)"
 puts ""
 puts "  Generated Reports:"
 puts "    - Group_39.Area"
@@ -148,8 +138,6 @@ puts "  Generated Files:"
 puts "    - ${DESIGN_NAME}.vg (gate-level netlist)"
 puts "    - ${DESIGN_NAME}.sdf (timing delays)"
 puts "    - ${DESIGN_NAME}.sdc (timing constraints)"
-puts "========================================================"
-puts ""
 
 # Exit dc_shell
 exit

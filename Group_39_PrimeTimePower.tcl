@@ -63,11 +63,11 @@ set power_enable_analysis true
 set power_analysis_mode averaged
 
 # Read VCD switching activity from RTL simulation
-# FIX: Added -time parameter to specify valid time window in picoseconds
-# VCD has 1ps timescale; start at 20ns (20000ps) to skip reset transients
+# This improves power estimation by excluding reset transients:
+#    (add to read_vc if you want) ... -time {20000 100000000}
 if { [file exists "M216A_TopModule.vcd"] } {
     puts "Reading VCD: M216A_TopModule.vcd"
-    read_vcd M216A_TopModule.vcd -strip_path EE216A_Testbench/dut -time {20000 100000000}
+    read_vcd M216A_TopModule.vcd -strip_path EE216A_Testbench/dut
 } else {
     puts "WARNING: VCD file not found. Running vectorless power analysis."
 }
@@ -79,18 +79,10 @@ update_power
 report_power -verbose > Group_39_Prime.Power
 report_power -hierarchy -levels 2 > Group_39_Prime.PowerHeirarchy
 
-################################################################################
-# Summary
-################################################################################
-
 puts ""
-puts "========================================================"
-puts " PrimeTime/PrimePower Analysis Complete"
-puts "========================================================"
 puts "  Timing: Group_39_Prime.TimingSetup/Hold"
 puts "  Power:  Group_39_Prime.Power"
 puts "  Area:   Group_39_Prime.Area"
-puts "========================================================"
 puts ""
 
 exit

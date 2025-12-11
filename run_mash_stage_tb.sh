@@ -2,15 +2,6 @@
 
 # ============================================================================
 # Script: run_mash_stage_tb.sh
-# Description:
-#   Headless ModelSim simulation script for mash_stage module testing
-#   
-#   This script:
-#     1. Sources the tool setup
-#     2. Creates/cleans the work library
-#     3. Compiles mash_stage.v and mash_stage_tb.v
-#     4. Runs the testbench in command-line mode
-#     5. Displays results to console
 # ============================================================================
 
 echo "========================================================"

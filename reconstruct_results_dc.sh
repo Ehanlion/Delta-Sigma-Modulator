@@ -18,14 +18,7 @@ done
 OUTPUT_FILE="results/deltaSigmaResults${counter}.txt"
 
 # Start writing to output file
-{
-    echo "========================================================"
-    echo "      Delta Sigma Project Results - Run ${counter}"
-    echo "========================================================"
-    echo ""
-    echo "Generated on: $(date)"
-    echo ""
-    
+{   
     # Extract Power Results (verbose format)
     echo "========================================================"
     echo "                  POWER RESULTS"
