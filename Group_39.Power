@@ -1,0 +1,59 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+        -verbose
+Design : M216A_TopModule
+Version: X-2025.06-SP3
+Date   : Wed Dec 10 19:25:53 2025
+****************************************
+
+
+Library(s) Used:
+
+    N16ADFP_StdCellss0p72v125c (File: /w/apps4/Synopsys/TSMC/CAD_TSMC-16-ADFP-FFC_Muse/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellss0p72v125c.db)
+
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+Design        Wire Load Model            Library
+------------------------------------------------
+M216A_TopModule        ZeroWireload      N16ADFP_StdCellss0p72v125c
+
+
+Global Operating Voltage = 0.72 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  =  74.9667 uW   (89%)
+  Net Switching Power  =   9.5691 uW   (11%)
+                         ---------
+Total Dynamic Power    =  84.5357 uW  (100%)
+
+Cell Leakage Power     =   2.4483 uW
+
+                 Internal         Switching           Leakage            Total                         Cell
+Power Group      Power            Power               Power              Power   (   %    )  Attrs  Count
+---------------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)            0
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)            0
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)            0
+clock_network  5.2141e-02            0.0000            0.0000        5.2141e-02  (  59.94%)            0
+                                                                                             i
+register       9.7131e-03        4.9521e-03        1.5231e+03        1.6188e-02  (  18.61%)            43
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)            0
+combinational  1.3112e-02        4.6170e-03          925.1459        1.8654e-02  (  21.45%)            51
+---------------------------------------------------------------------------------------------------------
+Total          7.4967e-02 mW     9.5691e-03 mW     2.4483e+03 nW     8.6984e-02 mW
+1

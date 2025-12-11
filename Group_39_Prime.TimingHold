@@ -1,0 +1,317 @@
+****************************************
+Report : timing
+	-path_type full
+	-delay_type min
+	-nosplit
+	-slack_lesser_than 1000.00
+	-max_paths 10
+	-sort_by slack
+Design : M216A_TopModule
+Version: X-2025.06-SP2
+Date   : Wed Dec 10 19:26:39 2025
+****************************************
+
+
+  Startpoint: ns/c3_z1_reg (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: ns/c3_z2_reg (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                             Incr       Path
+  ------------------------------------------------------------------------
+  clock clk (rise edge)                             0.00       0.00
+  clock network delay (propagated)                  0.00       0.00
+  ns/c3_z1_reg/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  ns/c3_z1_reg/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  ns/c3_z2_reg/D (DFCNQD1BWP20P90)                  0.00       0.03 f
+  data arrival time                                            0.03
+
+  clock clk (rise edge)                             0.00       0.00
+  clock network delay (propagated)                  0.00       0.00
+  ns/c3_z2_reg/CP (DFCNQD1BWP20P90)                            0.00 r
+  clock reconvergence pessimism                     0.00       0.00
+  clock uncertainty                                 0.03       0.03
+  library hold time                                 0.01       0.03
+  data required time                                           0.03
+  ------------------------------------------------------------------------
+  data required time                                           0.03
+  data arrival time                                           -0.03
+  ------------------------------------------------------------------------
+  slack (MET)                                                  0.00
+
+
+  Startpoint: stage1/accumulator_reg[0] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage1/accumulator_reg[0] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[0]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage1/accumulator_reg[0]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  U17/ZN (IAO21D1BWP20P90)                                       0.01       0.04 f
+  stage1/accumulator_reg[0]/D (DFCNQD1BWP16P90)                  0.00       0.04 f
+  data arrival time                                                         0.04
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[0]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.04
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.01
+
+
+  Startpoint: stage2/accumulator_reg[0] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage2/accumulator_reg[0] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage2/accumulator_reg[0]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage2/accumulator_reg[0]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  U14/ZN (IAO21D1BWP20P90)                                       0.01       0.04 f
+  stage2/accumulator_reg[0]/D (DFCNQD1BWP16P90)                  0.00       0.04 f
+  data arrival time                                                         0.04
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage2/accumulator_reg[0]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.04
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.01
+
+
+  Startpoint: stage3/accumulator_reg[0] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage3/accumulator_reg[0] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage3/accumulator_reg[0]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage3/accumulator_reg[0]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  U16/ZN (IAO21D1BWP20P90)                                       0.01       0.04 f
+  stage3/accumulator_reg[0]/D (DFCNQD1BWP16P90)                  0.00       0.04 f
+  data arrival time                                                         0.04
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage3/accumulator_reg[0]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.04
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.01
+
+
+  Startpoint: ns/c3_z1_reg (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: ns/out_f_reg[3] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                               Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                               0.00       0.00
+  clock network delay (propagated)                    0.00       0.00
+  ns/c3_z1_reg/CP (DFCNQD1BWP16P90)                   0.00       0.00 r
+  ns/c3_z1_reg/Q (DFCNQD1BWP16P90)                    0.03       0.03 f
+  U8/ZN (NR2D1BWP20P90)                               0.01       0.04 r
+  U9/ZN (NR2D1BWP20P90)                               0.01       0.05 f
+  ns/out_f_reg[3]/D (DFCNQD1BWP16P90)                 0.00       0.05 f
+  data arrival time                                              0.05
+
+  clock clk (rise edge)                               0.00       0.00
+  clock network delay (propagated)                    0.00       0.00
+  ns/out_f_reg[3]/CP (DFCNQD1BWP16P90)                           0.00 r
+  clock reconvergence pessimism                       0.00       0.00
+  clock uncertainty                                   0.03       0.03
+  library hold time                                   0.01       0.03
+  data required time                                             0.03
+  --------------------------------------------------------------------------
+  data required time                                             0.03
+  data arrival time                                             -0.05
+  --------------------------------------------------------------------------
+  slack (MET)                                                    0.02
+
+
+  Startpoint: ns/c3_z1_reg (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: ns/out_f_reg[2] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                               Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                               0.00       0.00
+  clock network delay (propagated)                    0.00       0.00
+  ns/c3_z1_reg/CP (DFCNQD1BWP16P90)                   0.00       0.00 r
+  ns/c3_z1_reg/Q (DFCNQD1BWP16P90)                    0.03       0.03 r
+  U8/ZN (NR2D1BWP20P90)                               0.01       0.04 f
+  U22/Z (AO21D1BWP20P90)                              0.01       0.05 f
+  ns/out_f_reg[2]/D (DFCNQD1BWP16P90)                 0.00       0.05 f
+  data arrival time                                              0.05
+
+  clock clk (rise edge)                               0.00       0.00
+  clock network delay (propagated)                    0.00       0.00
+  ns/out_f_reg[2]/CP (DFCNQD1BWP16P90)                           0.00 r
+  clock reconvergence pessimism                       0.00       0.00
+  clock uncertainty                                   0.03       0.03
+  library hold time                                   0.01       0.03
+  data required time                                             0.03
+  --------------------------------------------------------------------------
+  data required time                                             0.03
+  data arrival time                                             -0.05
+  --------------------------------------------------------------------------
+  slack (MET)                                                    0.02
+
+
+  Startpoint: stage1/accumulator_reg[1] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage1/accumulator_reg[1] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[1]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage1/accumulator_reg[1]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  intadd_0/U18/S (FA1D1BWP20P90)                                 0.02       0.05 f
+  stage1/accumulator_reg[1]/D (DFCNQD1BWP16P90)                  0.00       0.05 f
+  data arrival time                                                         0.05
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[1]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.05
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.02
+
+
+  Startpoint: stage2/accumulator_reg[1] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage2/accumulator_reg[1] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage2/accumulator_reg[1]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage2/accumulator_reg[1]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  intadd_1/U12/S (FA1D1BWP20P90)                                 0.02       0.05 f
+  stage2/accumulator_reg[1]/D (DFCNQD1BWP16P90)                  0.00       0.05 f
+  data arrival time                                                         0.05
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage2/accumulator_reg[1]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.05
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.02
+
+
+  Startpoint: stage1/accumulator_reg[2] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage1/accumulator_reg[2] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[2]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage1/accumulator_reg[2]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  intadd_0/U17/S (FA1D1BWP20P90)                                 0.02       0.05 f
+  stage1/accumulator_reg[2]/D (DFCNQD1BWP16P90)                  0.00       0.05 f
+  data arrival time                                                         0.05
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[2]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.05
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.02
+
+
+  Startpoint: stage1/accumulator_reg[3] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: stage1/accumulator_reg[3] (rising edge-triggered flip-flop clocked by clk)
+  Last common pin: clk
+  Path Group: clk
+  Path Type: min
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[3]/CP (DFCNQD1BWP16P90)                 0.00       0.00 r
+  stage1/accumulator_reg[3]/Q (DFCNQD1BWP16P90)                  0.03       0.03 f
+  intadd_0/U16/S (FA1D1BWP20P90)                                 0.02       0.05 f
+  stage1/accumulator_reg[3]/D (DFCNQD1BWP16P90)                  0.00       0.05 f
+  data arrival time                                                         0.05
+
+  clock clk (rise edge)                                          0.00       0.00
+  clock network delay (propagated)                               0.00       0.00
+  stage1/accumulator_reg[3]/CP (DFCNQD1BWP16P90)                            0.00 r
+  clock reconvergence pessimism                                  0.00       0.00
+  clock uncertainty                                              0.03       0.03
+  library hold time                                              0.01       0.03
+  data required time                                                        0.03
+  -------------------------------------------------------------------------------------
+  data required time                                                        0.03
+  data arrival time                                                        -0.05
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                               0.02
+
+Warning: report_timing has satisfied the max_paths criteria. There are 80 further endpoints which have paths of interest with slack less than  1000.00 that were not considered when generating this report. (UITE-502)
+
+1

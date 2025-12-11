@@ -1,0 +1,56 @@
+****************************************
+Report : Averaged Power
+	-verbose
+Design : M216A_TopModule
+Version: X-2025.06-SP2
+Date   : Wed Dec 10 19:26:39 2025
+****************************************
+
+Library(s) Used:
+
+    N16ADFP_StdCellff0p88vm40c (File: /w/apps4/Synopsys/TSMC/CAD_TSMC-16-ADFP-FFC_Muse/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellff0p88vm40c.db)
+    N16ADFP_StdCellss0p72v125c (File: /w/apps4/Synopsys/TSMC/CAD_TSMC-16-ADFP-FFC_Muse/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellss0p72v125c.db)
+
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+Cell               Design       Wire_model  Library       Selection_type
+--------------------------------------------------------------------------------
+                   M216A_TopModule
+                                ZeroWireload
+                                            N16ADFP_StdCellff0p88vm40c
+                                                          automatic-by-area
+
+Power-specific unit information :
+    Voltage Units = 1 V
+    Capacitance Units = 1 pf
+    Time Units = 1 ns
+    Dynamic Power Units = 1 W
+    Leakage Power Units = 1 W
+
+
+
+  Attributes
+  ----------
+      i  -  Including register clock pin internal power
+      u  -  User defined power group
+
+                        Internal  Switching  Leakage    Total
+Power Group             Power     Power      Power      Power   (     %)  Attrs
+--------------------------------------------------------------------------------
+clock_network           6.390e-05    0.0000    0.0000 6.390e-05 (50.00%)  i
+register                2.304e-05 7.519e-06 2.603e-08 3.059e-05 (23.94%)  
+combinational           2.655e-05 6.755e-06 6.177e-09 3.331e-05 (26.07%)  
+sequential                 0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+memory                     0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+io_pad                     0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+black_box                  0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+
+  Net Switching Power  = 1.427e-05   (11.17%)
+  Cell Internal Power  = 1.135e-04   (88.80%)
+  Cell Leakage Power   = 3.221e-08   ( 0.03%)
+                         ---------
+Total Power            = 1.278e-04  (100.00%)
+
+1

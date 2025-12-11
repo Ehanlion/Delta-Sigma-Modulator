@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup variables for file names
-Prefix="Group_39_DC"
+Prefix="Group_39"
 Area="Area"
 Power="Power"
 Hold="TimingHold"

@@ -42,7 +42,7 @@ set_operating_conditions -min ff0p88vm40c -max ss0p72v125c
 # Clock configuration for 500 MHz (2.0 ns period)
 # Keeping original timing to allow smaller/slower cells for power savings
 set Tclk 2.0
-set TCU  0.05
+set TCU  0.025
 set IN_DEL 0.4
 set IN_DEL_MIN 0.2
 set OUT_DEL 0.4

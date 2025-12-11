@@ -24,7 +24,7 @@ link_design    $DESIGN_NAME
 # TIMING: Constraints and Analysis
 ################################################################################
 
-# Clock and timing parameters (500 MHz)
+# Clock and timing parameters (500 MHz) - match synthesis script
 set Tclk       2.0
 set TCU        0.025
 set IN_DEL     0.4
@@ -77,6 +77,7 @@ update_power
 
 # Generate power reports
 report_power -verbose > Group_39_Prime.Power
+report_power -hierarchy -levels 2 > Group_39_Prime.PowerHeirarchy
 
 ################################################################################
 # Summary
